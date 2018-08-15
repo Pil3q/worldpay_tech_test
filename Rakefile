@@ -15,6 +15,6 @@ task :setup do
     connection.exec("CREATE DATABASE #{database};")
 
     connection = PG.connect(dbname: database)
-    connection.exec("CREATE TABLE offers(id SERIAL PRIMARY KEY, title VARCHAR(60), description VARCHAR(240), price INTEGER, currency VARCHAR(10));")
+    connection.exec("CREATE TABLE offers(id SERIAL PRIMARY KEY, title VARCHAR(60), description VARCHAR(240), price NUMERIC, currency VARCHAR(10));")
   end
 end
