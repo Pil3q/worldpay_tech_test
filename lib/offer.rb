@@ -14,14 +14,19 @@ class Offer
   end
 
   def self.create(content)
-    offer_status = 'live'
+    initial_status = 'live'
     offer_created_at = Time.new.strftime("%Y%m%d%H%M%S")
-    result = DatabaseConnection.query("INSERT INTO offers(title, description, price, currency, duration, status, created_at) VALUES('#{content[:title]}', '#{content[:description]}', '#{content[:price]}', '#{content[:currency]}', '#{content[:duration]}', '#{offer_status}', #{offer_created_at}) RETURNING *")
+    result = DatabaseConnection.query("INSERT INTO offers(title, description, price, currency, duration, status, created_at) VALUES('#{content[:title]}', '#{content[:description]}', '#{content[:price]}', '#{content[:currency]}', '#{content[:duration]}', '#{initial_status}', #{offer_created_at}) RETURNING *")
     Offer.new(result.first['id'], result.first['title'], result.first['description'], result.first['price'], result.first['currency'], result.first['duration'], result.first['status'], result.first['created_at'])
   end
 
   def self.show
     result = DatabaseConnection.query("SELECT * FROM offers")
     result.map { |offer| Offer.new(offer['id'], offer['title'], offer['description'], offer['price'], offer['currency'], offer['duration'], offer['status'], offer['created_at']) }
+  end
+
+  def self.find(id)
+    result = DatabaseConnection.query("SELECT * FROM offers WHERE id = '#{id}'")
+    Offer.new(result.first['id'], result.first['title'], result.first['description'], result.first['price'], result.first['currency'], result.first['duration'], result.first['status'], result.first['created_at'])
   end
 end

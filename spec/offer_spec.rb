@@ -16,9 +16,8 @@ describe Offer do
       expect(@offer.status).to eq 'live'
     end
     it 'creates a new offer with the right time' do
-      now_without_seconds = Time.new.strftime("%Y%m%d%H%M")
-      offer_created_at_without_seconds = @offer.created_at.slice!(0..11)
-      expect(offer_created_at_without_seconds).to eq now_without_seconds
+      time_now = Time.new.strftime("%Y%m%d%H%M%S")
+      expect(@offer.created_at).to eq time_now
     end
   end
 
@@ -29,6 +28,18 @@ describe Offer do
       results = offers.map(&:description)
 
       expect(results).to include("super fast")
+    end
+  end
+
+  describe '#find' do
+    it 'finds offer by index' do
+      result = Offer.find(@offer.id)
+      expect(result.title).to eq 'car'
+      expect(result.description).to eq 'super fast'
+      expect(result.price).to eq '100000.51'
+      expect(result.currency).to eq 'GBP'
+      expect(result.duration).to eq '24'
+      expect(result.status).to eq 'live'
     end
   end
 end
