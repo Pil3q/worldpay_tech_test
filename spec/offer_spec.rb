@@ -14,4 +14,14 @@ describe Offer do
       expect(@offer.currency).to eq 'GBP'
     end
   end
+
+  describe '#show' do
+    it 'returns all offers, wrapped in a Offer instance' do
+      offers = Offer.show
+
+      results = offers.map(&:description)
+
+      expect(results).to include("super fast")
+    end
+  end
 end

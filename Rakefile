@@ -18,3 +18,16 @@ task :setup do
     connection.exec("CREATE TABLE offers(id SERIAL PRIMARY KEY, title VARCHAR(60), description VARCHAR(240), price NUMERIC, currency VARCHAR(10));")
   end
 end
+
+task :teardown do
+  p "You are going to loose it all, type yes if you want to clear databases"
+
+  confirm = STDIN.gets.chomp
+
+  return unless confirm == 'yes'
+
+  ['merchant', 'merchant_test'].each do |database|
+    connection = PG.connect
+    connection.exec("DROP DATABASE #{ database }")
+  end
+end
