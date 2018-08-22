@@ -15,6 +15,9 @@
           <form action="/offers/<%= offer.id %>/cancel" method="post">
             <input type="submit" value="Cancel" />
           </form>
+          <form action="/offers/<%= offer.id %>/query" >
+            <input type="submit" value="I want it" />
+          </form>
       <% end %>
     </li>
     <% end %>

@@ -28,4 +28,14 @@ class Merchant  < Sinatra::Base
     Offer.cancel(params['id'])
     redirect '/offers'
   end
+
+  get '/offers/:id/query' do
+    @offer = Offer.find(params['id'])
+    erb :"offers/query"
+  end
+
+  post '/offers/:id/query' do
+    Message.send(Offer.find(params['id']), params)
+    redirect '/offers'
+  end
 end

@@ -1,0 +1,11 @@
+<form action="/offers/<%= @offer.id %>/query" method="post">
+  Name
+  <input type="text" name="name" />
+  <br>
+  Number
+  <input type="textarea" name="number" />
+  <br>
+  <input type="hidden" name="id" value="<%= @offer.id %>">
+  <br>
+  <input type="submit" value="Submit" />
+</form>
