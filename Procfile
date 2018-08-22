@@ -1,1 +1,1 @@
-console: rake setup
+web: rake setup
