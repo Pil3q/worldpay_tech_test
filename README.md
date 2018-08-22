@@ -20,4 +20,13 @@ As a merchant I do not want to receive any queries for expired offers
 Considering my current experience and knowledge I decided to use Ruby as a programming language with Sinatra for RESTful routing and handling requests. I decided to store the data in postgreSQL database and deploy the project to Heroku.git
 
 ## Assumptions
-...
+So far there is no user authentication, verification. Web does not handle bad user input. Backend logic works well, but still working on front end and deployment
+
+## How to run it
+```
+bundle
+rake setup
+rspec
+rackup -p4567
+enjoy it on localhost:4567
+```
