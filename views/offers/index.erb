@@ -1,0 +1,21 @@
+<h1>Hot deals !!!<h1>
+  <a href="/offers/new">
+     Add new offer
+   </a>
+<ul>
+  <% @offers.reverse.each do |offer| %>
+      <% if offer.status != 'cancelled' %>
+        <li id="offer-<%=offer.id %>">
+        <% if offer.expired? %>
+          <h2><font color="red"> EXPIRED </font><h2>
+        <% end %>
+          <h3><%= offer.title %> </h3>
+          <h4><%= offer.description %> </h4>
+          <h3>Price: <%= offer.price %> <%= offer.currency %></h3>
+          <form action="/offers/<%= offer.id %>/cancel" method="post">
+            <input type="submit" value="Cancel" />
+          </form>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
