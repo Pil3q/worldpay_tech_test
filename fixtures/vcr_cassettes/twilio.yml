@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.twilio.com/2010-04-01/Accounts/AC5aa76e3c7ccd0c77f55ff9aab18210f0/Messages.json
+    body:
+      encoding: UTF-8
+      string: Body=Hey%2C+I+am+interested+in+car+and+I+would+like+to+buy+the+product%0A++++++Kind+regards%0A++++++John%0A++++++123&From=%2B447480609147&To=%2B447450255468
+    headers:
+      User-Agent:
+      - twilio-ruby/5.12.2 (ruby/x86_64-darwin16 2.5.0-p0)
+      Accept-Charset:
+      - utf-8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - application/json
+      Authorization:
+      - Basic QUM1YWE3NmUzYzdjY2QwYzc3ZjU1ZmY5YWFiMTgyMTBmMDoxMjZjNDlhNWFiYWZkMjQwY2Q5ZWZmNTdmNjAwOWVkZQ==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - ETag
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 22 Aug 2018 07:38:18 GMT
+      Strict-Transport-Security:
+      - max-age=15768000
+      Twilio-Concurrent-Requests:
+      - '1'
+      Twilio-Request-Duration:
+      - '1.212'
+      Twilio-Request-Id:
+      - RQ83d10304fe8a4e8d9571a6a52518ddf4
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '910'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"sid": "SMd0c8803c46f6449586b5ce3be39bc71a", "date_created": "Wed,
+        22 Aug 2018 07:38:18 +0000", "date_updated": "Wed, 22 Aug 2018 07:38:18 +0000",
+        "date_sent": null, "account_sid": "AC5aa76e3c7ccd0c77f55ff9aab18210f0", "to":
+        "<CLIENT_NUMBER>", "from": "<MY_TWILO_NUMBER>", "messaging_service_sid": null,
+        "body": "Sent from your Twilio trial account - Hey, I am interested in car
+        and I would like to buy the product\n      Kind regards\n      John\n      123",
+        "status": "queued", "num_segments": "1", "num_media": "0", "direction": "outbound-api",
+        "api_version": "2010-04-01", "price": null, "price_unit": "USD", "error_code":
+        null, "error_message": null, "uri": "/2010-04-01/Accounts/AC5aa76e3c7ccd0c77f55ff9aab18210f0/Messages/SMd0c8803c46f6449586b5ce3be39bc71a.json",
+        "subresource_uris": {"media": "/2010-04-01/Accounts/AC5aa76e3c7ccd0c77f55ff9aab18210f0/Messages/SMd0c8803c46f6449586b5ce3be39bc71a/Media.json"}}'
+    http_version: 
+  recorded_at: Wed, 22 Aug 2018 07:38:18 GMT
+recorded_with: VCR 4.0.0

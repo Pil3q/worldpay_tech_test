@@ -1,6 +1,23 @@
 ENV['ENVIRONMENT'] = 'test'
 
 require 'rake'
+require 'vcr'
+require 'webmock'
+
+TWILIO_VARS = []
+TWILIO_VARS << 'TWILIO_ACCOUNT_SID'
+TWILIO_VARS << 'TWILIO_AUTH_TOKEN'
+TWILIO_VARS << 'MY_TWILO_NUMBER'
+TWILIO_VARS << 'CLIENT_NUMBER'
+
+VCR.configure do |config|
+  config.cassette_library_dir = "fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  TWILIO_VARS.each do |var|
+    config.filter_sensitive_data("<#{var}>") { ENV[var] }
+  end
+end
+
 Rake.application.load_rakefile
 
 RSpec.configure do |config|

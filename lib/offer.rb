@@ -1,7 +1,7 @@
 require_relative '../database_connection_setup'
 
 class Offer
-  TIME_NOW = Time.new.strftime("%Y%m%d%H%M%S")
+  TIME_NOW = Time.new.strftime('%Y%m%d%H%M%S')
   attr_reader :id, :title, :description, :price, :currency, :duration, :status, :created_at
   def initialize(id, title, description, price, currency, duration, status, created_at)
     @id = id
@@ -22,7 +22,7 @@ class Offer
   end
 
   def self.show
-    result = DatabaseConnection.query("SELECT * FROM offers")
+    result = DatabaseConnection.query('SELECT * FROM offers')
     result.map { |offer| Offer.new(offer['id'], offer['title'], offer['description'], offer['price'], offer['currency'], offer['duration'], offer['status'], offer['created_at']) }
   end
 
@@ -36,6 +36,6 @@ class Offer
   end
 
   def expired?
-    self.created_at.to_i + self.duration.split(':').join.to_i < TIME_NOW.to_i
+    created_at.to_i + duration.split(':').join.to_i < TIME_NOW.to_i
   end
 end
